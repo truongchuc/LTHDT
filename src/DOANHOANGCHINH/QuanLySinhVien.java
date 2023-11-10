@@ -1,25 +1,82 @@
 package DOANHOANGCHINH;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class QuanLySinhVien {
 	public ArrayList<SinhVien> dssv = new ArrayList<SinhVien>();
 
+	/*
+	 * public void KhoiTao() { Scanner sc = new Scanner(System.in); for (int i = 0;
+	 * i < 2; i++) { System.out.print("Nhập mã SV :"); int maSV = sc.nextInt();
+	 * sc.nextLine(); System.out.print("Nhập tên SV :"); String tenSV =
+	 * sc.nextLine(); System.out.print("Nhập Tuổi :"); int tuoi = sc.nextInt();
+	 * System.out.print("Nhập điểm trung bình :"); float dtb = sc.nextFloat();
+	 * SinhVien sv = new SinhVien(tenSV, tuoi, maSV, dtb); dssv.add(sv);
+	 * System.out.println("================="); } }
+	 */
+
 	public void KhoiTao() {
 		Scanner sc = new Scanner(System.in);
+
 		for (int i = 0; i < 2; i++) {
-			System.out.println("Nhập mã SV :");
-			int maSV = sc.nextInt();
-			sc.nextLine();
-			System.out.println("Nhập tên SV :");
-			String tenSV = sc.nextLine();
-			System.out.println("Nhập Tuổi :");
-			int tuoi = sc.nextInt();
-			System.out.println("Nhập điểm trung bình :");
-			float dtb = sc.nextFloat();
-			SinhVien sv = new SinhVien(tenSV, tuoi, maSV, dtb);
-			dssv.add(sv);
+			try {
+
+				int maSV = 0;
+				while (true) {
+					try {
+						System.out.print("Nhập mã SV :");
+						maSV = sc.nextInt();
+						sc.nextLine();
+						break;
+					} catch (Exception e) {
+						// TODO: handle
+						System.out.println("Mã sinh viên không hợp lệ. Vui lòng nhập lại.");
+						sc.nextLine();
+					}
+				}
+
+				System.out.print("Nhập tên SV :");
+				String tenSV = sc.nextLine();
+
+				int tuoi = 0;
+				while (true) {
+					try {
+						System.out.print("Nhập Tuổi :");
+						tuoi = sc.nextInt();
+						sc.nextLine();
+						break;
+					} catch (Exception e) {
+						// TODO: handle exception
+						System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+						sc.nextLine();
+					}
+				}
+
+				float dtb = 0;
+				while (true) {
+					try {
+						System.out.print("Nhập điểm trung bình :");
+						dtb = sc.nextFloat();
+						sc.nextLine();
+						break;
+					} catch (Exception e) {
+						// TODO: handle exception
+						System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
+						sc.nextLine();
+					}
+				}
+				SinhVien sv = new SinhVien(tenSV, tuoi, maSV, dtb);
+				dssv.add(sv);
+				System.out.println("================="); 
+			} catch (Exception e) {
+				System.out.println("Lỗi khi nhập liệu. Vui lòng thử lại.");
+				sc.nextLine();
+				i--;
+			}
 		}
 	}
 
@@ -59,29 +116,94 @@ public class QuanLySinhVien {
 
 	public void chen() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Nhập mã SV :");
-		int maSVmoi = sc.nextInt();
-		sc.nextLine();
-		System.out.println("Nhập tên SV :");
-		String tenSVmoi = sc.nextLine();
-		System.out.println("Nhập Tuổi :");
-		int tuoimoi = sc.nextInt();
-		System.out.println("Nhập điểm trung bình :");
-		float dtbmoi = sc.nextFloat();
+		try {
 
-		// Tạo một đối tượng Student từ dữ liệu người dùng nhập
-		SinhVien sv = new SinhVien(tenSVmoi, tuoimoi, maSVmoi, dtbmoi);
+			int maSVmoi = 0;
+			while (true) {
+				try {
+					System.out.print("Nhập mã SV :");
+					maSVmoi = sc.nextInt();
+					sc.nextLine();
+					
+					// Kiểm tra xem mã sinh viên đã có chưa
+	                boolean trungMaSV = false;
+	                for (SinhVien sv : dssv) {
+	                    if (sv.getMaSV() == maSVmoi) {
+	                        trungMaSV = true;
+	                        break;
+	                    }
+	                }
 
-		System.out.print("Nhập vị trí cần chèn: ");
-		int vt = sc.nextInt();
-		vt = vt - 1;
-		// Kiểm tra xem vị trí (vt) có hợp lệ hay không
-		if (vt >= 0 && vt <= dssv.size()) {
-			dssv.add(vt, sv);
-			System.out.println("Sinh viên đã được chèn vào vị trí " + vt + " trong danh sách.");
-		} else {
-			System.out.println("Vị trí không hợp lệ. Sinh viên không được chèn.");
+	                if (trungMaSV) {
+	                    System.out.println("Mã sinh viên đã tồn tại. Vui lòng nhập lại.");
+	                } else {
+	                    break;
+	                }
+				} catch (Exception e) {
+					// TODO: handle
+					System.out.println("Mã sinh viên không hợp lệ. Vui lòng nhập lại.");
+					sc.nextLine();
+				}
+			}
+
+			System.out.print("Nhập tên SV :");
+			String tenSVmoi = sc.nextLine();
+
+			int tuoimoi = 0;
+			while (true) {
+				try {
+					System.out.print("Nhập Tuổi :");
+					tuoimoi = sc.nextInt();
+					sc.nextLine();
+					break;
+				} catch (Exception e) {
+					// TODO: handle exception
+					System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+					sc.nextLine();
+				}
+			}
+
+			float dtbmoi = 0;
+			while (true) {
+				try {
+					System.out.print("Nhập điểm trung bình :");
+					dtbmoi = sc.nextFloat();
+					sc.nextLine();
+					break;
+				} catch (Exception e) {
+					// TODO: handle exception
+					System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
+					sc.nextLine();
+				}
+			}
+			int vt = 0;
+			while (true) {
+				try {
+					System.out.print("Nhập vị trí cần chèn: ");
+					vt = sc.nextInt();
+					sc.nextLine();
+					break;
+				} catch (Exception e) {
+					// TODO: handle exception
+					System.out.println("Vị trí không hợp lệ. Vui lòng nhập lại.");
+					sc.nextLine();
+				}
+			}
+
+			SinhVien sv = new SinhVien(tenSVmoi, tuoimoi, maSVmoi, dtbmoi);
+			vt = vt - 1;
+			// Kiểm tra xem vị trí (vt) có hợp lệ hay không
+			if (vt >= 0 && vt <= dssv.size()) {
+				dssv.add(vt, sv);
+				System.out.println("Sinh viên đã được chèn vào vị trí " + vt + " trong danh sách.");
+			} else {
+				System.out.println("Vị trí không hợp lệ. Sinh viên không được chèn.");
+			}
+		} catch (Exception e) {
+			System.out.println("Lỗi khi nhập liệu. Vui lòng thử lại.");
+			sc.nextLine();
 		}
+
 	}
 
 	public void remove() {
@@ -97,24 +219,78 @@ public class QuanLySinhVien {
 
 	public void suaThongTinSinhVien(int id) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Sửa thông tin cho học phần có ID " + id);
+		System.out.print("Sửa thông tin cho học phần có ID " + id);
 		for (SinhVien dssv : dssv) {
 			if (dssv.getMaSV() == id) {
-				System.out.println("Nhập mã SV :");
-				int maSVmoi = sc.nextInt();
-				sc.nextLine();
-				System.out.println("Nhập tên SV :");
-				String tenSVmoi = sc.nextLine();
-				System.out.println("Nhập Tuổi :");
-				int tuoimoi = sc.nextInt();
-				System.out.println("Nhập điểm trung bình :");
-				float dtbmoi = sc.nextFloat();
+				try {
+
+					int maSVmoi = 0;
+					while (true) {
+						try {
+							System.out.print("Nhập mã SV :");
+							maSVmoi = sc.nextInt();
+							sc.nextLine();
+							break;
+						} catch (Exception e) {
+							// TODO: handle
+							System.out.println("Mã sinh viên không hợp lệ. Vui lòng nhập lại.");
+							sc.nextLine();
+						}
+					}
+
+					System.out.print("Nhập tên SV :");
+					String tenSVmoi = sc.nextLine();
+
+					int tuoimoi = 0;
+					while (true) {
+						try {
+							System.out.print("Nhập Tuổi :");
+							tuoimoi = sc.nextInt();
+							sc.nextLine();
+							break;
+						} catch (Exception e) {
+							// TODO: handle exception
+							System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+							sc.nextLine();
+						}
+					}
+
+					float dtbmoi = 0;
+					while (true) {
+						try {
+							System.out.print("Nhập điểm trung bình :");
+							dtbmoi = sc.nextFloat();
+							sc.nextLine();
+							break;
+						} catch (Exception e) {
+							// TODO: handle exception
+							System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
+							sc.nextLine();
+						}
+					}
+					int vt = 0;
+					while (true) {
+						try {
+							System.out.print("Nhập vị trí cần chèn: ");
+							vt = sc.nextInt();
+							sc.nextLine();
+							break;
+						} catch (Exception e) {
+							// TODO: handle exception
+							System.out.println("Vị trí không hợp lệ. Vui lòng nhập lại.");
+							sc.nextLine();
+						}
+					}
+					dssv.setMaSV(maSVmoi);;
+					dssv.setHoTen(tenSVmoi);
+					dssv.setTuoi(tuoimoi);
+					dssv.setDtb(dtbmoi);
+				} catch (Exception e) {
+					System.out.println("Lỗi khi nhập liệu. Vui lòng thử lại.");
+					sc.nextLine();
+				}
 
 				// Cập nhật thông tin của sinh viên
-				dssv.setMaSV(maSVmoi);
-				dssv.setHoTen(tenSVmoi);
-				dssv.setTuoi(tuoimoi);
-				dssv.setDtb(dtbmoi);
 
 				System.out.println("Thông tin của Sinh Viên đã được cập nhật.");
 				return; // Kết thúc khi tìm thấy sinh viên và cập nhật thông tin
@@ -137,5 +313,33 @@ public class QuanLySinhVien {
 		}
 		System.out.println("Không tìm thấy sinh viên ");
 		return null; // Trả về null nếu không tìm thấy sinh viên
+	}
+
+	public void sapXepTheoDTBGiamDan() {
+		Collections.sort(dssv, new Comparator<SinhVien>() {
+			@Override
+			public int compare(SinhVien sv1, SinhVien sv2) {
+				return Float.compare(sv2.getDtb(), sv1.getDtb());
+			}
+		});
+
+		System.out.println("Danh sách sinh viên sau khi sắp xếp theo Điểm trung bình tăng dần:");
+	}
+
+	public void hienthilonnhat() {
+		float max = 0;
+		for (SinhVien sv : dssv) {
+			if (max < sv.getDtb())
+				max = sv.getDtb();
+		}
+		for (SinhVien dssv : dssv) {
+			if (dssv.getDtb() == max) {
+				String formattedOutput = String.format(
+						"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm trung bình: %.1f\tXếp loại: %-10sKết quả: %-10s",
+						dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getDtb(), dssv.getXepLoai(),
+						dssv.getKetQua());
+				System.out.println(formattedOutput);
+			}
+		}
 	}
 }

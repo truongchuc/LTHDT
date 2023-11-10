@@ -1,6 +1,8 @@
 package DOANHOANGCHINH;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -30,16 +32,16 @@ public class QuanLyHocPhan {
 
 		for (int i = 0; i < 2; i++) {
 			try {
-				System.out.println("Nhập mã HP:");
+				System.out.print("Nhập mã HP:");
 				String maHp = sc.nextLine();
 
-				System.out.println("Nhập tên HP:");
+				System.out.print("Nhập tên HP:");
 				String tenHp = sc.nextLine();
 
 				int soTc = 0;
 				while (true) {
 					try {
-						System.out.println("Nhập số tín chỉ:");
+						System.out.print("Nhập số tín chỉ:");
 						soTc = sc.nextInt();
 						sc.nextLine(); 
 						break;
@@ -52,7 +54,7 @@ public class QuanLyHocPhan {
 				int hk = 0;
 				while (true) {
 					try {
-						System.out.println("Nhập học kỳ:");
+						System.out.print("Nhập học kỳ:");
 						hk = sc.nextInt();
 						sc.nextLine(); 
 						break;
@@ -69,6 +71,7 @@ public class QuanLyHocPhan {
 				sc.nextLine();
 				i--;
 			}
+			System.out.println("=================");
 		}
 
 		obj.ghiFile(dshp);
@@ -82,29 +85,28 @@ public class QuanLyHocPhan {
 	}
 
 	public void hienthi() {
+		System.out.println("=================");
 		for (HocPhan dshp : dshp) {
 			String formattedOutput = String.format("Mã HP: %2s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
 					dshp.getMaHp(), dshp.getTenHp(), dshp.getSoTc(), dshp.getHk());
 			System.out.println(formattedOutput);
+			System.out.println("=================");
 		}
 	}
 
-	public void hienthihk(int hk) {
-		boolean found = false; // biến này để kiểm tra xem có học phần nào được tìm thấy không.
-
-		for (HocPhan dshp : dshp) {
-			if (dshp.getHk() == hk) {
-				String formattedOutput = String.format("Mã HP: %2s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
-						dshp.getMaHp(), dshp.getTenHp(), dshp.getSoTc(), dshp.getHk());
-				System.out.println(formattedOutput);
-				found = true; // Đánh dấu là đã tìm thấy ít nhất một học phần.
-			}
-		}
-
-		if (!found) {
-			System.out.println("Không tìm thấy học phần nào trong học kỳ " + hk);
-		}
-	}
+	/*
+	 * public void hienthihk(int hk) { boolean found = false; // biến này để kiểm
+	 * tra xem có học phần nào được tìm thấy không.
+	 * 
+	 * for (HocPhan dshp : dshp) { if (dshp.getHk() == hk) { String formattedOutput
+	 * = String.format("Mã HP: %2s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
+	 * dshp.getMaHp(), dshp.getTenHp(), dshp.getSoTc(), dshp.getHk());
+	 * System.out.println(formattedOutput); found = true; // Đánh dấu là đã tìm thấy
+	 * ít nhất một học phần. } }
+	 * 
+	 * if (!found) { System.out.println("Không tìm thấy học phần nào trong học kỳ "
+	 * + hk); } }
+	 */
 
 	/*
 	 * public void chen() { Scanner sc = new Scanner(System.in);
@@ -192,6 +194,7 @@ public class QuanLyHocPhan {
 				dshp.remove(i);
 		}
 		System.out.println("Danh Sách sau khi xóa HP!!!");
+		obj.ghiFile(dshp);
 	}
 
 	public void suaThongTinHocPhan(String id) {
@@ -237,5 +240,29 @@ public class QuanLyHocPhan {
 		}
 		System.out.println("Không tìm thấy HP ");
 		return null; // Trả về null nếu không tìm thấy học phần
+	}
+	
+	public HocPhan timHocPhanTheoHocKy(int hocKyCanTim) {
+		for (HocPhan dshp : dshp) {
+			if (dshp.getHk()==hocKyCanTim) {
+				String formattedOutput = String.format("Mã HP: %2s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
+						dshp.getMaHp(), dshp.getTenHp(), dshp.getSoTc(), dshp.getHk());
+				System.out.println(formattedOutput);
+				return dshp; // Trả về Học phần nếu tên phù hợp
+			}
+		}
+		System.out.println("Không tìm thấy HP ");
+		return null; // Trả về null nếu không tìm thấy học phần
+	}
+	
+	public void sapXepTheoSoTinChiTangDan() {
+        Collections.sort(dshp, new Comparator<HocPhan>() {
+            @Override
+            public int compare(HocPhan hp1, HocPhan hp2) {
+                return hp1.getSoTc() - hp2.getSoTc();
+            }
+        });
+
+        System.out.println("Danh sách học phần sau khi sắp xếp theo số tín chỉ tăng dần:");
 	}
 }

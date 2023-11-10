@@ -46,5 +46,6 @@ public class SinhVien extends Nguoi {
 	public SinhVien(String hoTen, int tuoi) {
 		super(hoTen, tuoi);
 	}
+	
 
 }

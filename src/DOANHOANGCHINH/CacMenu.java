@@ -17,7 +17,9 @@ public class CacMenu {
 			System.out.println("4. Chèn Sinh Viên :");
 			System.out.println("5. Xóa Sinh Viên :");
 			System.out.println("6. Sửa thông tin Sinh Viên :");
-			System.out.println("7. Thoát menu Sinh Viên :");
+			System.out.println("7. Sắp Xếp Sinh Viên theo DTB :");
+			System.out.println("8. Tìm Sinh Viên có DTB lớn nhất :");
+			System.out.println("9. Thoát menu Sinh Viên :");
 			System.out.print("Chọn Chức năng :");
 			c1 = sc.nextInt();
 			sc.nextLine();
@@ -50,10 +52,20 @@ public class CacMenu {
 				int idcantim = sc.nextInt();
 				svobj.suaThongTinSinhVien(idcantim);
 				svobj.hienthi();
+				break;
+			case 7:			
+				svobj.sapXepTheoDTBGiamDan();
+				svobj.xepLoai();
+				svobj.kq();
+				svobj.hienthi();
+				break;
+			case 8:			
+				svobj.hienthilonnhat();
+				break;
 			default:
 				break;
 			}
-		} while (c1 < 7);
+		} while (c1 < 9);
 	}
 
 	public void menuHp() {
@@ -66,7 +78,8 @@ public class CacMenu {
 			System.out.println("5. Sửa thông tin Học Phần :");
 			System.out.println("6. Tìm Học Phần bằng tên :");
 			System.out.println("7. Tìm Học Phần theo học kỳ :");
-			System.out.println("8. Thoát menu Học Phần :");
+			System.out.println("8. Sắp xếp Học Phần theo số tín chỉ :");
+			System.out.println("9. Thoát menu Học Phần :");
 			System.out.print("Chọn Chức năng :");
 			c2 = sc.nextInt();
 			sc.nextLine();
@@ -101,11 +114,15 @@ public class CacMenu {
 			case 7:
 				System.out.println("Nhập kỳ cho học phần cần tìm :");
 				int hk = sc.nextInt();
-				obj.hienthihk(hk);
+				obj.timHocPhanTheoHocKy(hk);
+				break;
+			case 8:
+				obj.sapXepTheoSoTinChiTangDan();
+				obj.hienthi();
 				break;
 			default:
 				break;
 			}
-		} while (c2 < 8);
+		} while (c2 < 9);
 	}
 }
