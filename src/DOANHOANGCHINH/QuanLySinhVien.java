@@ -208,10 +208,10 @@ public class QuanLySinhVien {
 
 	public void remove() {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Nhập tên Sinh Viên cần xóa: ");
-		String ht = sc.nextLine();
+		System.out.print("Nhập Mã Sinh Viên cần xóa: ");
+		int id = sc.nextInt();
 		for (int i = 0; i < dssv.size(); i++) {
-			if (dssv.get(i).getHoTen().equals(ht) == true)
+			if (dssv.get(i).getMaSV() == id)
 				dssv.remove(i);
 		}
 		System.out.println("Danh Sách sau khi xóa HP!!!");
@@ -219,7 +219,7 @@ public class QuanLySinhVien {
 
 	public void suaThongTinSinhVien(int id) {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Sửa thông tin cho học phần có ID " + id);
+		System.out.println("Sửa thông tin cho học phần có ID " + id);
 		for (SinhVien dssv : dssv) {
 			if (dssv.getMaSV() == id) {
 				try {
@@ -307,7 +307,7 @@ public class QuanLySinhVien {
 						"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm trung bình: %.1f\tXếp loại: %-10sKết quả: %-10s",
 						dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getDtb(), dssv.getXepLoai(),
 						dssv.getKetQua());
-				System.out.println(formattedOutput);
+				System.out.print(formattedOutput);
 				return dssv; // Trả về sinh viên nếu tên phù hợp
 			}
 		}
@@ -338,7 +338,7 @@ public class QuanLySinhVien {
 						"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm trung bình: %.1f\tXếp loại: %-10sKết quả: %-10s",
 						dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getDtb(), dssv.getXepLoai(),
 						dssv.getKetQua());
-				System.out.println(formattedOutput);
+				System.out.print(formattedOutput);
 			}
 		}
 	}

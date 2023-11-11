@@ -11,15 +11,17 @@ public class CacMenu {
 	public void menuSv() {
 		int c1;
 		do {
-			System.out.println("1. Nhập Sinh Viên :");
-			System.out.println("2. Hiển thị Sinh Viên :");
-			System.out.println("3. Nhập tên Sinh Viên cần tìm :");
-			System.out.println("4. Chèn Sinh Viên :");
-			System.out.println("5. Xóa Sinh Viên :");
-			System.out.println("6. Sửa thông tin Sinh Viên :");
-			System.out.println("7. Sắp Xếp Sinh Viên theo DTB :");
-			System.out.println("8. Tìm Sinh Viên có DTB lớn nhất :");
-			System.out.println("9. Thoát menu Sinh Viên :");
+			System.out.println("<=== Quản lý Sinh Viên ==========================>");
+			System.out.println("|1. Nhập Sinh Viên :				|");
+			System.out.println("|2. Hiển thị Sinh Viên :			|");
+			System.out.println("|3. Nhập tên Sinh Viên cần tìm :		|");
+			System.out.println("|4. Chèn Sinh Viên :				|");
+			System.out.println("|5. Xóa Sinh Viên :				|");
+			System.out.println("|6. Sửa thông tin Sinh Viên :			|");
+			System.out.println("|7. Sắp Xếp Sinh Viên theo DTB :		|");
+			System.out.println("|8. Tìm Sinh Viên có DTB lớn nhất :		|");
+			System.out.println("|9. Thoát menu Sinh Viên :			|");
+			System.out.println("<================================================>");
 			System.out.print("Chọn Chức năng :");
 			c1 = sc.nextInt();
 			sc.nextLine();
@@ -50,6 +52,8 @@ public class CacMenu {
 			case 6:
 				System.out.println("Nhập mã mã sinh viên cần sửa thông tin:");
 				int idcantim = sc.nextInt();
+				svobj.xepLoai();
+				svobj.kq();
 				svobj.suaThongTinSinhVien(idcantim);
 				svobj.hienthi();
 				break;
@@ -59,7 +63,9 @@ public class CacMenu {
 				svobj.kq();
 				svobj.hienthi();
 				break;
-			case 8:			
+			case 8:		
+				svobj.xepLoai();
+				svobj.kq();
 				svobj.hienthilonnhat();
 				break;
 			default:
@@ -71,15 +77,17 @@ public class CacMenu {
 	public void menuHp() {
 		int c2;
 		do {
-			System.out.println("1. Đọc file :");
-			System.out.println("2. Hiển thị Học Phần :");
-			System.out.println("3. chèn Học Phần :");
-			System.out.println("4. xóa Học Phần :");
-			System.out.println("5. Sửa thông tin Học Phần :");
-			System.out.println("6. Tìm Học Phần bằng tên :");
-			System.out.println("7. Tìm Học Phần theo học kỳ :");
-			System.out.println("8. Sắp xếp Học Phần theo số tín chỉ :");
-			System.out.println("9. Thoát menu Học Phần :");
+	        System.out.println("<=== Quản lý Học Phần ==================>");
+			System.out.println("|1. Đọc file :				|");
+			System.out.println("|2. Hiển thị Học Phần :			|");
+			System.out.println("|3. chèn Học Phần :			|");
+			System.out.println("|4. xóa Học Phần :			|");
+			System.out.println("|5. Sửa thông tin Học Phần :		|");
+			System.out.println("|6. Tìm Học Phần bằng tên :		|");
+			System.out.println("|7. Tìm Học Phần theo học kỳ :		|");
+			System.out.println("|8. Sắp xếp Học Phần theo số tín chỉ :	|");
+			System.out.println("|9. Thoát menu Học Phần :		|");
+			System.out.println("<=======================================>");
 			System.out.print("Chọn Chức năng :");
 			c2 = sc.nextInt();
 			sc.nextLine();

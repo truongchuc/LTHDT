@@ -43,11 +43,11 @@ public class QuanLyHocPhan {
 					try {
 						System.out.print("Nhập số tín chỉ:");
 						soTc = sc.nextInt();
-						sc.nextLine(); 
+						sc.nextLine();
 						break;
 					} catch (Exception e) {
 						System.out.println("Số tín chỉ không hợp lệ. Vui lòng nhập lại.");
-						sc.nextLine(); 
+						sc.nextLine();
 					}
 				}
 
@@ -56,11 +56,11 @@ public class QuanLyHocPhan {
 					try {
 						System.out.print("Nhập học kỳ:");
 						hk = sc.nextInt();
-						sc.nextLine(); 
+						sc.nextLine();
 						break;
 					} catch (Exception e) {
 						System.out.println("Học kỳ không hợp lệ. Vui lòng nhập lại.");
-						sc.nextLine(); 
+						sc.nextLine();
 					}
 				}
 
@@ -85,12 +85,10 @@ public class QuanLyHocPhan {
 	}
 
 	public void hienthi() {
-		System.out.println("=================");
 		for (HocPhan dshp : dshp) {
 			String formattedOutput = String.format("Mã HP: %2s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
 					dshp.getMaHp(), dshp.getTenHp(), dshp.getSoTc(), dshp.getHk());
-			System.out.println(formattedOutput);
-			System.out.println("=================");
+			System.out.print(formattedOutput);
 		}
 	}
 
@@ -126,27 +124,33 @@ public class QuanLyHocPhan {
 	 * " trong danh sách."); obj.ghiFile(dshp); } else {
 	 * System.out.println("Vị trí không hợp lệ Học phần không được chèn."); } }
 	 */
-	
+
 	public void chen() {
 	    Scanner sc = new Scanner(System.in);
 
 	    try {
 	        System.out.print("Nhập mã HP :");
 	        String maHp = sc.nextLine();
-	        
+
+	        // Kiểm tra xem mã HP đã tồn tại hay chưa
+	        if (kiemTraTonTaiMaHp(maHp)) {
+	            System.out.println("Mã học phần đã tồn tại. Học phần không được chèn.");
+	            return;
+	        }
+
 	        System.out.print("Nhập tên HP :");
 	        String tenHp = sc.nextLine();
-	        
+
 	        int soTc = 0;
 	        while (true) {
 	            try {
 	                System.out.print("Nhập số tín chỉ:");
 	                soTc = sc.nextInt();
-	                sc.nextLine(); 
+	                sc.nextLine();
 	                break;
 	            } catch (Exception e) {
 	                System.out.println("Số tín chỉ không hợp lệ. Vui lòng nhập lại.");
-	                sc.nextLine(); 
+	                sc.nextLine();
 	            }
 	        }
 
@@ -155,11 +159,11 @@ public class QuanLyHocPhan {
 	            try {
 	                System.out.print("Nhập học kỳ:");
 	                hk = sc.nextInt();
-	                sc.nextLine(); 
+	                sc.nextLine();
 	                break;
 	            } catch (Exception e) {
 	                System.out.println("Học kỳ không hợp lệ. Vui lòng nhập lại.");
-	                sc.nextLine(); 
+	                sc.nextLine();
 	            }
 	        }
 
@@ -174,7 +178,6 @@ public class QuanLyHocPhan {
 	            HocPhan hp = new HocPhan(maHp, tenHp, soTc, hk);
 	            dshp.add(vt, hp);
 	            System.out.println("Học phần đã được chèn vào vị trí " + vt + " trong danh sách.");
-	            obj.ghiFile(dshp);
 	        } else {
 	            System.out.println("Vị trí không hợp lệ. Học phần không được chèn.");
 	        }
@@ -184,85 +187,126 @@ public class QuanLyHocPhan {
 	    }
 	}
 
+	// Hàm kiểm tra mã học phần đã tồn tại hay chưa
+	private boolean kiemTraTonTaiMaHp(String maHp) {
+	    for (HocPhan hp : dshp) {
+	        if (hp.getMaHp().equalsIgnoreCase(maHp)) {
+	            return true; // Mã học phần đã tồn tại
+	        }
+	    }
+	    return false; // Mã học phần chưa tồn tại
+	}
+
+
 
 	public void remove() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Nhập tên HP cần xóa: ");
 		String ht = sc.nextLine();
 		for (int i = 0; i < dshp.size(); i++) {
-			if (dshp.get(i).getTenHp().equals(ht) == true)
+			if (dshp.get(i).getMaHp().equals(ht) == true)
 				dshp.remove(i);
 		}
 		System.out.println("Danh Sách sau khi xóa HP!!!");
-		obj.ghiFile(dshp);
+		/* obj.ghiFile(dshp); */
 	}
 
 	public void suaThongTinHocPhan(String id) {
-		Scanner sc = new Scanner(System.in);
-		boolean timThay = false;
-		System.out.println("Sửa thông tin cho học phần có ID " + id);
-		for (HocPhan hp : dshp) {
-			if (hp.getMaHp().equals(id)) {
-				timThay = true;
-				System.out.println("Nhập mã HP:");
-				String maHpMoi = sc.nextLine();
-				System.out.println("Nhập tên HP:");
-				String tenHpMoi = sc.nextLine();
-				System.out.println("Nhập số tín chỉ:");
-				int soTcMoi = sc.nextInt();
-				System.out.println("Nhập học kỳ:");
-				int hk = sc.nextInt();
+	    Scanner sc = new Scanner(System.in);
+	    boolean timThay = false;
 
-				// Cập nhật thông tin của học phần
-				hp.setMaHp(maHpMoi);
-				hp.setTenHp(tenHpMoi);
-				hp.setSoTc(soTcMoi);
-				hp.setHk(hk);
+	    try {
+	        System.out.println("Sửa thông tin cho học phần có ID " + id);
+	        for (HocPhan hp : dshp) {
+	            if (hp.getMaHp().equals(id)) {
+	                timThay = true;
+	                System.out.print("Nhập mã HP:");
+	                String maHpMoi = sc.nextLine();
+	                System.out.print("Nhập tên HP:");
+	                String tenHpMoi = sc.nextLine();
+	                
+	                int soTcMoi = 0;
+	                while (true) {
+	                    try {
+	                        System.out.print("Nhập số tín chỉ:");
+	                        soTcMoi = sc.nextInt();
+	                        sc.nextLine();
+	                        break;
+	                    } catch (Exception e) {
+	                        System.out.println("Số tín chỉ không hợp lệ. Vui lòng nhập lại.");
+	                        sc.nextLine();
+	                    }
+	                }
 
-				System.out.println("Thông tin của học phần đã được cập nhật.");
-				break; // Dừng sau khi tìm thấy học phần và cập nhật thông tin
-			}
-		}
+	                int hk = 0;
+	                while (true) {
+	                    try {
+	                        System.out.print("Nhập học kỳ:");
+	                        hk = sc.nextInt();
+	                        sc.nextLine();
+	                        break;
+	                    } catch (Exception e) {
+	                        System.out.println("Học kỳ không hợp lệ. Vui lòng nhập lại.");
+	                        sc.nextLine();
+	                    }
+	                }
 
-		if (!timThay) {
-			System.out.println("Không tìm thấy học phần với ID " + id);
-		}
+	                // Cập nhật thông tin của học phần
+	                hp.setMaHp(maHpMoi);
+	                hp.setTenHp(tenHpMoi);
+	                hp.setSoTc(soTcMoi);
+	                hp.setHk(hk);
+
+	                System.out.println("Thông tin của học phần đã được cập nhật.");
+	                break; 
+	            }
+	        }
+
+	        if (!timThay) {
+	            System.out.println("Không tìm thấy học phần với ID " + id);
+	        }
+	    } catch (Exception e) {
+	        System.out.println("Lỗi khi nhập liệu. Vui lòng thử lại.");
+	        sc.nextLine();
+	    }
 	}
+
 
 	public HocPhan timHocPhanTheoTen(String tenCanTim) {
 		for (HocPhan dshp : dshp) {
 			if (dshp.getTenHp().equalsIgnoreCase(tenCanTim)) {
 				String formattedOutput = String.format("Mã HP: %2s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
 						dshp.getMaHp(), dshp.getTenHp(), dshp.getSoTc(), dshp.getHk());
-				System.out.println(formattedOutput);
+				System.out.print(formattedOutput);
 				return dshp; // Trả về Học phần nếu tên phù hợp
 			}
 		}
 		System.out.println("Không tìm thấy HP ");
 		return null; // Trả về null nếu không tìm thấy học phần
 	}
-	
-	public HocPhan timHocPhanTheoHocKy(int hocKyCanTim) {
+
+	public void timHocPhanTheoHocKy(int hocKyCanTim) {
 		for (HocPhan dshp : dshp) {
-			if (dshp.getHk()==hocKyCanTim) {
+			if (dshp.getHk() == hocKyCanTim) {
 				String formattedOutput = String.format("Mã HP: %2s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
 						dshp.getMaHp(), dshp.getTenHp(), dshp.getSoTc(), dshp.getHk());
-				System.out.println(formattedOutput);
-				return dshp; // Trả về Học phần nếu tên phù hợp
+				System.out.print(formattedOutput);
+			} else {
+				System.out.println("Không tìm thấy HP !!!!");
 			}
+			
 		}
-		System.out.println("Không tìm thấy HP ");
-		return null; // Trả về null nếu không tìm thấy học phần
+		
 	}
-	
-	public void sapXepTheoSoTinChiTangDan() {
-        Collections.sort(dshp, new Comparator<HocPhan>() {
-            @Override
-            public int compare(HocPhan hp1, HocPhan hp2) {
-                return hp1.getSoTc() - hp2.getSoTc();
-            }
-        });
 
-        System.out.println("Danh sách học phần sau khi sắp xếp theo số tín chỉ tăng dần:");
+	public void sapXepTheoSoTinChiTangDan() {
+		Collections.sort(dshp, new Comparator<HocPhan>() {
+			@Override
+			public int compare(HocPhan hp1, HocPhan hp2) {
+				return hp1.getSoTc() - hp2.getSoTc();
+			}
+		});
+
+		System.out.println("Danh sách học phần sau khi sắp xếp theo số tín chỉ tăng dần:");
 	}
 }
