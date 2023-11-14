@@ -73,7 +73,4 @@ public class SinhVien extends Nguoi {
 	public SinhVien() {
 	}
 
-
-	
-
 }
