@@ -1,136 +1,107 @@
 package DOANHOANGCHINH;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
+import DOANHOANGCHINH.QuanLyNguoiDoc;
+import DOANHOANGCHINH.QuanLySach;
 
 public class CacMenu {
-	QuanLyHocPhan obj = new QuanLyHocPhan();
-	QuanLySinhVien svobj = new QuanLySinhVien();
-	Scanner sc = new Scanner(System.in);
+    QuanLySach obj = new QuanLySach();
+    QuanLyNguoiDoc ndobj = new QuanLyNguoiDoc();
+    Scanner sc = new Scanner(System.in);
 
-	public void menuSv() {
-		int c1;
-		do {
-			System.out.println("<=== Quản lý Sinh Viên ==========================>");
-			System.out.println("|1. Nhập Sinh Viên :				|");
-			System.out.println("|2. Hiển thị Sinh Viên :			|");
-			System.out.println("|3. Nhập tên Sinh Viên cần tìm :		|");
-			System.out.println("|4. Chèn Sinh Viên :				|");
-			System.out.println("|5. Xóa Sinh Viên :				|");
-			System.out.println("|6. Sửa thông tin Sinh Viên :			|");
-			System.out.println("|7. Sắp Xếp Sinh Viên theo DTB :		|");
-			System.out.println("|8. Tìm Sinh Viên có DTB lớn nhất :		|");
-			System.out.println("|9. Thoát menu Sinh Viên :			|");
-			System.out.println("<================================================>");
-			System.out.print("Chọn Chức năng :");
-			c1 = sc.nextInt();
-			sc.nextLine();
-			switch (c1) {
-			case 1:
-				svobj.KhoiTao();
-				break;
-			case 2:
-				svobj.xepLoai();
-				svobj.kq();
-				svobj.hienthi();
-				break;
-			case 3:
-				System.out.println("Nhập tên sinh viên cần tìm :");
-				String tencantim = sc.nextLine();
-				svobj.timSinhVienTheoTen(tencantim);
-				break;
-			case 4:
-				svobj.chen();
-				svobj.xepLoai();
-				svobj.kq();
-				svobj.hienthi();
-				break;
-			case 5:
-				svobj.remove();
-				svobj.hienthi();
-				break;
-			case 6:
-				System.out.println("Nhập mã mã sinh viên cần sửa thông tin:");
-				int idcantim = sc.nextInt();
-				svobj.xepLoai();
-				svobj.kq();
-				svobj.suaThongTinSinhVien(idcantim);
-				svobj.hienthi();
-				break;
-			case 7:			
-				svobj.sapXepTheoDTBGiamDan();
-				svobj.xepLoai();
-				svobj.kq();
-				svobj.hienthi();
-				break;
-			case 8:		
-				svobj.xepLoai();
-				svobj.kq();
-				svobj.hienthilonnhat();
-				break;
-			default:
-				break;
-			}
-		} while (c1 < 9);
-	}
+    public void menuNd() {
+        int c1;
+        do {
+            System.out.println("<=== Quản lý Người Đọc ===========================>");
+            System.out.println("|1. Nhập Người Đọc :                            |");
+            System.out.println("|2. Hiển thị Người Đọc :                        |");
+            System.out.println("|3. Nhập tên Người Đọc cần tìm :                |");
+            System.out.println("|4. Chèn Người Đọc :                            |");
+            System.out.println("|5. Xóa Người Đọc :                             |");
+            System.out.println("|6. Sửa thông tin Người Đọc :                   |");
+            System.out.println("|7. Thoát menu Người Đọc :                      |");
+            System.out.println("<===================================================>");
+            System.out.print("Chọn Chức năng :");
+            c1 = sc.nextInt();
+            sc.nextLine();
+            switch (c1) {
+                case 1:
+                    ndobj.KhoiTao();
+                    break;
+                case 2:
+                    ndobj.hienthi();
+                    break;
+                case 3:
+                    System.out.println("Nhập tên người đọc cần tìm :");
+                    String tencantim = sc.nextLine();
+                    ndobj.timNguoiDocTheoTen(tencantim);
+                    break;
+                case 4:
+                    ndobj.chen();
+                    ndobj.hienthi();
+                    break;
+                case 5:
+                    ndobj.remove();
+                    ndobj.hienthi();
+                    break;
+                case 6:
+                    System.out.println("Nhập mã người đọc cần sửa thông tin:");
+                    int idcantim = sc.nextInt();
+                    ndobj.suaThongTinNguoiDoc(idcantim);
+                    ndobj.hienthi();
+                    break;
+                default:
+                    break;
+            }
+        } while (c1 < 7);
+    }
 
-	public void menuHp() {
-		int c2;
-		do {
-	        System.out.println("<=== Quản lý Học Phần ==================>");
-			System.out.println("|1. Đọc file :				|");
-			System.out.println("|2. Hiển thị Học Phần :			|");
-			System.out.println("|3. chèn Học Phần :			|");
-			System.out.println("|4. xóa Học Phần :			|");
-			System.out.println("|5. Sửa thông tin Học Phần :		|");
-			System.out.println("|6. Tìm Học Phần bằng tên :		|");
-			System.out.println("|7. Tìm Học Phần theo học kỳ :		|");
-			System.out.println("|8. Sắp xếp Học Phần theo số tín chỉ :	|");
-			System.out.println("|9. Thoát menu Học Phần :		|");
-			System.out.println("<=======================================>");
-			System.out.print("Chọn Chức năng :");
-			c2 = sc.nextInt();
-			sc.nextLine();
-			switch (c2) {
-			case 1:
-				obj.KhoiTao();
-				obj.docfile();
-				break;
-			case 2:
-				obj.docfile();
-				obj.hienthi();
-				break;
-			case 3:
-				obj.chen();
-				obj.hienthi();
-				break;
-			case 4:
-				obj.remove();
-				obj.hienthi();
-				break;
-			case 5:
-				System.out.println("Nhập mã Học Phần cần sửa thông tin :");
-				String mahpcantim = sc.nextLine();
-				obj.suaThongTinHocPhan(mahpcantim);
-				obj.hienthi();
-				break;
-			case 6:
-				System.out.println("Nhập tên học phần cần tìm :");
-				String tencantim = sc.nextLine();
-				obj.timHocPhanTheoTen(tencantim);
-				break;
-			case 7:
-				System.out.println("Nhập kỳ cho học phần cần tìm :");
-				int hk = sc.nextInt();
-				obj.timHocPhanTheoHocKy(hk);
-				break;
-			case 8:
-				obj.sapXepTheoSoTinChiTangDan();
-				obj.hienthi();
-				break;
-			default:
-				break;
-			}
-		} while (c2 < 9);
-	}
+    public void menuSach() {
+        int c2;
+        do {
+            System.out.println("<=== Quản lý Sách ============================>");
+            System.out.println("|1. Nhập Sách :                              |");
+            System.out.println("|2. Hiển thị Sách :                          |");
+            System.out.println("|3. Nhập tên Sách cần tìm :                  |");
+            System.out.println("|4. Chèn Sách :                              |");
+            System.out.println("|5. Xóa Sách :                               |");
+            System.out.println("|6. Sửa thông tin Sách :                     |");
+            System.out.println("|7. Thoát menu Sách :                        |");
+            System.out.println("<=============================================>");
+            System.out.print("Chọn Chức năng :");
+            c2 = sc.nextInt();
+            sc.nextLine();  // Consume the newline character
+
+            switch (c2) {
+                case 1:
+                    obj.KhoiTao();
+                    break;
+                case 2:
+                    obj.hienthi();
+                    break;
+                case 3:
+                    System.out.println("Nhập tên sách cần tìm :");
+                    String tencantim = sc.nextLine();
+                    obj.timSachTheoTen(tencantim);
+                    break;
+                case 4:
+                    obj.chen();
+                    obj.hienthi();
+                    break;
+                case 5:
+                    obj.remove();
+                    obj.hienthi();
+                    break;
+                case 6:
+                    System.out.println("Nhập mã sách cần sửa thông tin :");
+                    String masachcantim = sc.nextLine();
+                    obj.suaThongTinSach(masachcantim);
+                    obj.hienthi();
+                    break;
+                default:
+                    break;
+            }
+        } while (c2 < 7);
+
+    }
 }

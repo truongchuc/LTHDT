@@ -14,7 +14,8 @@ public class MainProgram {
 		        System.out.println("<===Menu=================>");
 		        System.out.println("|1. Quản lý Sinh Viên	|");
 		        System.out.println("|2. Quản lý Học Phần	|");
-		        System.out.println("|3. Thoát		|");
+		        System.out.println("|3. Quản lý Giảng Viên	|");
+		        System.out.println("|4. Thoát		|");
 		        System.out.println("<========================>");
 		        System.out.print("Chọn chức năng: ");
 		        chon = sc.nextInt();
@@ -28,6 +29,9 @@ public class MainProgram {
 		                menu.menuHp();
 		                break;
 		            case 3:
+		                menu.menuGv();
+		                break;
+		            case 4:
 		                System.out.println("Kết thúc chương trình.");
 		                break;
 		            default:
@@ -36,8 +40,8 @@ public class MainProgram {
 		        }
 		    } catch (InputMismatchException e) {
 		        System.out.println("Lỗi: Vui lòng nhập số nguyên cho chức năng.");
-		        sc.nextLine(); // Đọc và loại bỏ dữ liệu không hợp lệ
+		        sc.nextLine();
 		    }
-		} while (chon != 3);
+		} while (chon != 4);
 }
 }

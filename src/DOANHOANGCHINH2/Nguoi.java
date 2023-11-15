@@ -3,6 +3,15 @@ package DOANHOANGCHINH2;
 public class Nguoi {
 	private String hoTen;
 	private int Tuoi;
+	private int phuCap;
+
+	public int getPhuCap() {
+		return phuCap;
+	}
+
+	public void setPhuCap(int phuCap) {
+		this.phuCap = phuCap;
+	}
 
 	public String getHoTen() {
 		return hoTen;

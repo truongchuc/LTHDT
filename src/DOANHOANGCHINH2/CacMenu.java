@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class CacMenu {
 	QuanLyHocPhan obj = new QuanLyHocPhan();
 	QuanLySinhVien svobj = new QuanLySinhVien();
+	QuanLyGiangVien gvobj = new QuanLyGiangVien();
 	Scanner sc = new Scanner(System.in);
 
 	public void menuSv() {
@@ -56,13 +57,13 @@ public class CacMenu {
 				svobj.kq();
 				svobj.hienthi();
 				break;
-			case 7:			
+			case 7:
 				svobj.sapXepTheoDTBGiamDan();
 				svobj.xepLoai();
 				svobj.kq();
 				svobj.hienthi();
 				break;
-			case 8:		
+			case 8:
 				svobj.xepLoai();
 				svobj.kq();
 				svobj.hienthilonnhat();
@@ -76,7 +77,7 @@ public class CacMenu {
 	public void menuHp() {
 		int c2;
 		do {
-	        System.out.println("<=== Quản lý Học Phần ==================>");
+			System.out.println("<=== Quản lý Học Phần ==================>");
 			System.out.println("|1. Đọc file :				|");
 			System.out.println("|2. Hiển thị Học Phần :			|");
 			System.out.println("|3. chèn Học Phần :			|");
@@ -132,4 +133,60 @@ public class CacMenu {
 			}
 		} while (c2 < 9);
 	}
+
+	public void menuGv() {
+		int c3;
+		do {
+			System.out.println("<=== Quản lý Giảng Viên =========================>");
+			System.out.println("|1. Nhập Giảng Viên :				|");
+			System.out.println("|2. Hiển thị Giảng Viên :			|");
+			System.out.println("|3. Nhập tên Giảng Viên cần tìm :		|");
+			System.out.println("|4. Chèn Giảng Viên :				|");
+			System.out.println("|5. Xóa Giảng Viên :				|");
+			System.out.println("|6. Sửa thông tin Giảng Viên :			|");
+			System.out.println("|7. Sắp xếp số theo số tiết dạy của Giảng Viên :			|");
+			System.out.println("|8. Thoát menu Giảng Viên :			|");
+			System.out.println("<================================================>");
+			System.out.print("Chọn Chức năng :");
+			c3 = sc.nextInt();
+			sc.nextLine();
+			switch (c3) {
+			case 1:
+				gvobj.KhoiTao();
+				break;
+			case 2:
+				gvobj.hienthi();
+				break;
+			case 3:
+				System.out.print("Nhập tên giảng viên cần tìm :");
+				String tencantim = sc.nextLine();
+				gvobj.timGiangVienTheoTen(tencantim);
+				break;
+			case 4:
+				gvobj.chen();
+				gvobj.hienthi();
+				break;
+			case 5:
+				gvobj.hienthi();
+				System.out.println("Nhập tên giảng viên cần xóa:");
+				String tenCanXoa = sc.nextLine();
+				gvobj.xoaGiangVienTheoTen(tenCanXoa);
+				gvobj.hienthi();
+				break;
+			case 6:
+				System.out.println("Nhập tên giảng viên cần sửa thông tin:");
+				String tencantimsua = sc.nextLine();
+				gvobj.suaThongTinGiangVien(tencantimsua);
+				gvobj.hienthi();
+				break;
+			case 7:
+				gvobj.sapXepTheoSoTiecDayGiamDan();
+				gvobj.hienthi();
+				break;
+			default:
+				break;
+			}
+		} while (c3 < 8);
+	}
+
 }

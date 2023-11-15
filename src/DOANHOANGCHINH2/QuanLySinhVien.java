@@ -275,7 +275,7 @@ public class QuanLySinhVien {
 			if (dssv.get(i).getMaSV() == id)
 				dssv.remove(i);
 		}
-		System.out.println("Danh Sách sau khi xóa HP!!!");
+		System.out.println("Danh Sách sau khi xóa Sinh Viên!!!");
 	}
 
 	public void suaThongTinSinhVien(int id) {
