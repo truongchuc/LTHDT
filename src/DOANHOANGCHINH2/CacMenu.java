@@ -144,7 +144,7 @@ public class CacMenu {
 			System.out.println("|4. Chèn Giảng Viên :				|");
 			System.out.println("|5. Xóa Giảng Viên :				|");
 			System.out.println("|6. Sửa thông tin Giảng Viên :			|");
-			System.out.println("|7. Sắp xếp số theo số tiết dạy của Giảng Viên :			|");
+			System.out.println("|7. Sắp xếp số theo số tiết dạy của Giảng Viên :|");
 			System.out.println("|8. Thoát menu Giảng Viên :			|");
 			System.out.println("<================================================>");
 			System.out.print("Chọn Chức năng :");
