@@ -66,6 +66,7 @@ public class QuanLyHocPhan {
 
 				HocPhan hp = new HocPhan(maHp, tenHp, soTc, hk);
 				dshp.add(hp);
+				System.out.println("=================");
 			} catch (Exception e) {
 				System.out.println("Lỗi khi nhập liệu. Vui lòng thử lại.");
 				sc.nextLine();
@@ -85,10 +86,12 @@ public class QuanLyHocPhan {
 	}
 
 	public void hienthi() {
+		System.out.println("============================================================================================================");
 		for (HocPhan dshp : dshp) {
-			String formattedOutput = String.format("Mã HP: %2s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
+			String formattedOutput = String.format("Mã HP: %-10s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
 					dshp.getMaHp(), dshp.getTenHp(), dshp.getSoTc(), dshp.getHk());
 			System.out.print(formattedOutput);
+			System.out.println("============================================================================================================");
 		}
 	}
 
@@ -272,7 +275,7 @@ public class QuanLyHocPhan {
 	public HocPhan timHocPhanTheoTen(String tenCanTim) {
 		for (HocPhan dshp : dshp) {
 			if (dshp.getTenHp().equalsIgnoreCase(tenCanTim)) {
-				String formattedOutput = String.format("Mã HP: %2s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
+				String formattedOutput = String.format("Mã HP: %-10s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
 						dshp.getMaHp(), dshp.getTenHp(), dshp.getSoTc(), dshp.getHk());
 				System.out.print(formattedOutput);
 				return dshp; // Trả về Học phần nếu tên phù hợp
@@ -285,7 +288,7 @@ public class QuanLyHocPhan {
 	public void timHocPhanTheoHocKy(int hocKyCanTim) {
 		for (HocPhan dshp : dshp) {
 			if (dshp.getHk() == hocKyCanTim) {
-				String formattedOutput = String.format("Mã HP: %2s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
+				String formattedOutput = String.format("Mã HP: %-10s  Tên HP: %-25s  Số tín chỉ: %2d  Học kỳ: %d%n",
 						dshp.getMaHp(), dshp.getTenHp(), dshp.getSoTc(), dshp.getHk());
 				System.out.print(formattedOutput);
 			} else {

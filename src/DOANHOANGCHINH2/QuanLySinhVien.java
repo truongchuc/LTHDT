@@ -59,13 +59,13 @@ public class QuanLySinhVien {
 				float dToan = 0;
 				while (true) {
 					try {
-						System.out.print("Nhập Học Phần 1 :");
+						System.out.print("Nhập Điểm Học Phần 1 :");
 						dToan = sc.nextFloat();
 						sc.nextLine();
 						break;
 					} catch (Exception e) {
 						// TODO: handle exception
-						System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+						System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
 						sc.nextLine();
 					}
 				}
@@ -73,13 +73,13 @@ public class QuanLySinhVien {
 				float dVan = 0;
 				while (true) {
 					try {
-						System.out.print("Nhập Học Phần 2 :");
+						System.out.print("Nhập Điểm Học Phần 2 :");
 						dVan = sc.nextFloat();
 						sc.nextLine();
 						break;
 					} catch (Exception e) {
 						// TODO: handle exception
-						System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+						System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
 						sc.nextLine();
 					}
 				}
@@ -87,13 +87,13 @@ public class QuanLySinhVien {
 				float dAnh = 0;
 				while (true) {
 					try {
-						System.out.print("Nhập Học Phần 3 :");
+						System.out.print("Nhập Điểm Học Phần 3 :");
 						dAnh = sc.nextFloat();
 						sc.nextLine();
 						break;
 					} catch (Exception e) {
 						// TODO: handle exception
-						System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+						System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
 						sc.nextLine();
 					}
 				}
@@ -111,12 +111,16 @@ public class QuanLySinhVien {
 	}
 
 	public void hienthi() {
+		System.out.println(
+				"========================================================================================================================================================================================================================");
 		for (SinhVien dssv : dssv) {
 			String formattedOutput = String.format(
 					"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm Học Phần 1: %.1f\tĐiểm Học Phần 2: %.1f\tĐiểm Học Phần 3: %.1f\tĐiểm trung bình: %.1f\tXếp loại: %-15sKết quả: %-10s",
 					dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getdToan(), dssv.getdVan(), dssv.getdAnh(),
 					dssv.getDtb(), dssv.getXepLoai(), dssv.getKetQua());
 			System.out.println(formattedOutput);
+			System.out.println(
+					"========================================================================================================================================================================================================================");
 		}
 	}
 
@@ -196,13 +200,13 @@ public class QuanLySinhVien {
 			float dToan = 0;
 			while (true) {
 				try {
-					System.out.print("Nhập Học Phần 1 :");
+					System.out.print("Nhập Điểm Học Phần 1 :");
 					dToan = sc.nextFloat();
 					sc.nextLine();
 					break;
 				} catch (Exception e) {
 					// TODO: handle exception
-					System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+					System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
 					sc.nextLine();
 				}
 			}
@@ -210,13 +214,13 @@ public class QuanLySinhVien {
 			float dVan = 0;
 			while (true) {
 				try {
-					System.out.print("Nhập Học Phần 2 :");
+					System.out.print("Nhập Điểm Học Phần 2 :");
 					dVan = sc.nextFloat();
 					sc.nextLine();
 					break;
 				} catch (Exception e) {
 					// TODO: handle exception
-					System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+					System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
 					sc.nextLine();
 				}
 			}
@@ -230,13 +234,13 @@ public class QuanLySinhVien {
 					break;
 				} catch (Exception e) {
 					// TODO: handle exception
-					System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+					System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
 					sc.nextLine();
 				}
 			}
 
 			float dtb = (dToan + dVan + dAnh) / 3;
-			
+
 			int vt = 0;
 			while (true) {
 				try {
@@ -325,7 +329,7 @@ public class QuanLySinhVien {
 							break;
 						} catch (Exception e) {
 							// TODO: handle exception
-							System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+							System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
 							sc.nextLine();
 						}
 					}
@@ -339,7 +343,7 @@ public class QuanLySinhVien {
 							break;
 						} catch (Exception e) {
 							// TODO: handle exception
-							System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+							System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
 							sc.nextLine();
 						}
 					}
@@ -353,7 +357,7 @@ public class QuanLySinhVien {
 							break;
 						} catch (Exception e) {
 							// TODO: handle exception
-							System.out.println("Tuổi không hợp lệ. Vui lòng nhập lại.");
+							System.out.println("Điểm không hợp lệ. Vui lòng nhập lại.");
 							sc.nextLine();
 						}
 					}
@@ -387,8 +391,8 @@ public class QuanLySinhVien {
 			if (dssv.getHoTen().equals(tenCanTim)) {
 				String formattedOutput = String.format(
 						"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm Học Phần 1: %.1f\tĐiểm Học Phần 2: %.1f\tĐiểm Học Phần 3: %.1f\tĐiểm trung bình: %.1f\tXếp loại: %-15sKết quả: %-10s",
-						dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getdToan(), dssv.getdVan(), dssv.getdAnh(),
-						dssv.getDtb(), dssv.getXepLoai(), dssv.getKetQua());
+						dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getdToan(), dssv.getdVan(),
+						dssv.getdAnh(), dssv.getDtb(), dssv.getXepLoai(), dssv.getKetQua());
 				System.out.println(formattedOutput);
 				return dssv; // Trả về sinh viên nếu tên phù hợp
 			}
@@ -418,8 +422,8 @@ public class QuanLySinhVien {
 			if (dssv.getDtb() == max) {
 				String formattedOutput = String.format(
 						"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm Học Phần 1: %.1f\tĐiểm Học Phần 2: %.1f\tĐiểm Học Phần 3: %.1f\tĐiểm trung bình: %.1f\tXếp loại: %-15sKết quả: %-10s",
-						dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getdToan(), dssv.getdVan(), dssv.getdAnh(),
-						dssv.getDtb(), dssv.getXepLoai(), dssv.getKetQua());
+						dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getdToan(), dssv.getdVan(),
+						dssv.getdAnh(), dssv.getDtb(), dssv.getXepLoai(), dssv.getKetQua());
 				System.out.println(formattedOutput);
 			}
 		}

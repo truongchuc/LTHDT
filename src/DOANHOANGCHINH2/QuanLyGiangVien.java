@@ -61,17 +61,17 @@ public class QuanLyGiangVien {
 						break;
 					case 3:
 						trinhdo = "tiến sĩ";
+						break;
 					default:
 						System.out.println("Chọn không đúng!");
 						break;
 					}
 				} while (choose < 1 || choose > 3);
-				System.out.print("Số tiết dạy: ");
-				soTietDay = sc.nextInt();
 				sc.nextLine();
 
 				GiangVien gv = new GiangVien(tenGV, tuoi, khoa, trinhdo, soTietDay);
 				dsgv.add(gv);
+				System.out.println("=================");
 			} catch (Exception e) {
 				System.out.println("Lỗi khi nhập liệu. Vui lòng thử lại.");
 				sc.nextLine();
@@ -81,11 +81,13 @@ public class QuanLyGiangVien {
 	}
 
 	public void hienthi() {
+		 System.out.println("==================================================================================================================================");
 		for (GiangVien gv : dsgv) {
 			String formattedOutput = String.format(
 					"Tên giảng viên: %-30sTuổi: %d\tKhoa: %-20sTrình độ: %-15sSố tiết dạy: %d", gv.getHoTen(),
 					gv.getTuoi(), gv.getKhoa(), gv.getTrinhDo(), gv.getSoTietDay());
 			System.out.println(formattedOutput);
+			System.out.println("==================================================================================================================================");
 		}
 	}
 
