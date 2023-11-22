@@ -59,7 +59,7 @@ public class QuanLySinhVien {
 				float dToan = 0;
 				while (true) {
 					try {
-						System.out.print("Nhập Điểm Toán :");
+						System.out.print("Nhập Học Phần 1 :");
 						dToan = sc.nextFloat();
 						sc.nextLine();
 						break;
@@ -73,7 +73,7 @@ public class QuanLySinhVien {
 				float dVan = 0;
 				while (true) {
 					try {
-						System.out.print("Nhập Điểm Văn :");
+						System.out.print("Nhập Học Phần 2 :");
 						dVan = sc.nextFloat();
 						sc.nextLine();
 						break;
@@ -87,7 +87,7 @@ public class QuanLySinhVien {
 				float dAnh = 0;
 				while (true) {
 					try {
-						System.out.print("Nhập Điểm Anh :");
+						System.out.print("Nhập Học Phần 3 :");
 						dAnh = sc.nextFloat();
 						sc.nextLine();
 						break;
@@ -113,7 +113,7 @@ public class QuanLySinhVien {
 	public void hienthi() {
 		for (SinhVien dssv : dssv) {
 			String formattedOutput = String.format(
-					"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm Toán: %.1f\tĐiểm Văn: %.1f\tĐiểm Anh: %.1f\tĐiểm trung bình: %.1f\tXếp loại: %-15sKết quả: %-10s",
+					"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm Học Phần 1: %.1f\tĐiểm Học Phần 2: %.1f\tĐiểm Học Phần 3: %.1f\tĐiểm trung bình: %.1f\tXếp loại: %-15sKết quả: %-10s",
 					dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getdToan(), dssv.getdVan(), dssv.getdAnh(),
 					dssv.getDtb(), dssv.getXepLoai(), dssv.getKetQua());
 			System.out.println(formattedOutput);
@@ -196,7 +196,7 @@ public class QuanLySinhVien {
 			float dToan = 0;
 			while (true) {
 				try {
-					System.out.print("Nhập Điểm Toán :");
+					System.out.print("Nhập Học Phần 1 :");
 					dToan = sc.nextFloat();
 					sc.nextLine();
 					break;
@@ -210,7 +210,7 @@ public class QuanLySinhVien {
 			float dVan = 0;
 			while (true) {
 				try {
-					System.out.print("Nhập Điểm Văn :");
+					System.out.print("Nhập Học Phần 2 :");
 					dVan = sc.nextFloat();
 					sc.nextLine();
 					break;
@@ -224,7 +224,7 @@ public class QuanLySinhVien {
 			float dAnh = 0;
 			while (true) {
 				try {
-					System.out.print("Nhập Điểm Anh :");
+					System.out.print("Nhập Điểm Học Phần 3 :");
 					dAnh = sc.nextFloat();
 					sc.nextLine();
 					break;
@@ -319,7 +319,7 @@ public class QuanLySinhVien {
 					float dToan = 0;
 					while (true) {
 						try {
-							System.out.print("Nhập Điểm Toán :");
+							System.out.print("Nhập Điểm Học Phần 1 :");
 							dToan = sc.nextFloat();
 							sc.nextLine();
 							break;
@@ -333,7 +333,7 @@ public class QuanLySinhVien {
 					float dVan = 0;
 					while (true) {
 						try {
-							System.out.print("Nhập Điểm Văn :");
+							System.out.print("Nhập Điểm Học Phần 2 :");
 							dVan = sc.nextFloat();
 							sc.nextLine();
 							break;
@@ -347,7 +347,7 @@ public class QuanLySinhVien {
 					float dAnh = 0;
 					while (true) {
 						try {
-							System.out.print("Nhập Điểm Anh :");
+							System.out.print("Nhập Điểm Học Phần 3 :");
 							dAnh = sc.nextFloat();
 							sc.nextLine();
 							break;
@@ -386,7 +386,7 @@ public class QuanLySinhVien {
 		for (SinhVien dssv : dssv) {
 			if (dssv.getHoTen().equals(tenCanTim)) {
 				String formattedOutput = String.format(
-						"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm Toán: %.1f\tĐiểm Văn: %.1f\tĐiểm Anh: %.1f\tĐiểm trung bình: %.1f\tXếp loại: %-15sKết quả: %-10s",
+						"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm Học Phần 1: %.1f\tĐiểm Học Phần 2: %.1f\tĐiểm Học Phần 3: %.1f\tĐiểm trung bình: %.1f\tXếp loại: %-15sKết quả: %-10s",
 						dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getdToan(), dssv.getdVan(), dssv.getdAnh(),
 						dssv.getDtb(), dssv.getXepLoai(), dssv.getKetQua());
 				System.out.println(formattedOutput);
@@ -417,7 +417,7 @@ public class QuanLySinhVien {
 		for (SinhVien dssv : dssv) {
 			if (dssv.getDtb() == max) {
 				String formattedOutput = String.format(
-						"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm Toán: %.1f\tĐiểm Văn: %.1f\tĐiểm Anh: %.1f\tĐiểm trung bình: %.1f\tXếp loại: %-15sKết quả: %-10s",
+						"Mã sinh viên: %d\tTên sinh viên: %-30sTuổi: %d\tĐiểm Học Phần 1: %.1f\tĐiểm Học Phần 2: %.1f\tĐiểm Học Phần 3: %.1f\tĐiểm trung bình: %.1f\tXếp loại: %-15sKết quả: %-10s",
 						dssv.getMaSV(), dssv.getHoTen(), dssv.getTuoi(), dssv.getdToan(), dssv.getdVan(), dssv.getdAnh(),
 						dssv.getDtb(), dssv.getXepLoai(), dssv.getKetQua());
 				System.out.println(formattedOutput);
